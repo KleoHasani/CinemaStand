@@ -1,0 +1,44 @@
+{
+  "name": "cinemastand-api",
+  "description": "(API) CinemaStand.",
+  "version": "0.0.1",
+  "type": "module",
+  "main": "src/main.js",
+  "license": "MIT",
+  "author": {
+    "name": "Kleo Hasani",
+    "email": "kleo@hasani.com",
+    "url": "https://github.com/kleohasani"
+  },
+  "homepage": "https://github.com/KleoHasani/CinemaStand#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KleoHasani/CinemaStand.git"
+  },
+  "bugs": {
+    "url": "https://github.com/KleoHasani/CinemaStand/issues"
+  },
+  "keywords": [
+    "Movies",
+    "TV-Shows"
+  ],
+  "scripts": {
+    "lint": "eslint --ext js .",
+    "lint:fix": "eslint --ext js . --fix",
+    "test": "jest",
+    "start:dev": "nodemon .",
+    "start": "node ."
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "dotenv": "^10.0.0",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "nodemon": "^2.0.12",
+    "prettier": "^2.4.1"
+  }
+}
