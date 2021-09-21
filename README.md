@@ -4,7 +4,7 @@
 
 ---
 
-# Cinema Stand ![kleohasani-version](https://img.shields.io/github/package-json/v/kleohasani/cinema-stand)
+# Cinema Stand ![kleohasani-version](https://img.shields.io/github/package-json/v/kleohasani/CinemaStand)
 
 ## Description
 
