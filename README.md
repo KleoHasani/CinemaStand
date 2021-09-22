@@ -46,7 +46,7 @@
   - ### Clone
 
     ```bash
-    git clone https://github.com/KleoHasani/cinema-stand.git
+    git clone https://github.com/KleoHasani/CinemaStand.git
     ```
 
   - ### Install
