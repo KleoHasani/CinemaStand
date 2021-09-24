@@ -2,7 +2,6 @@
   "name": "cinemastand-api",
   "description": "(API) CinemaStand.",
   "version": "0.0.1",
-  "type": "module",
   "main": "src/main.js",
   "license": "MIT",
   "author": {
@@ -30,10 +29,11 @@
     "start": "node ."
   },
   "dependencies": {
-    "express": "^4.17.1"
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "pg": "^8.7.1"
   },
   "devDependencies": {
-    "dotenv": "^10.0.0",
     "eslint": "^7.32.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^8.3.0",
