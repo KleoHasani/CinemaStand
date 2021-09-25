@@ -11,4 +11,22 @@ const pool = new Pool({
   max: 20,
 });
 
-module.exports = { pool };
+module.exports = {
+  pool,
+  query: async (sql, values) => {
+    let client = null;
+    try {
+      client = await pool.connect();
+      const data = await client.query(sql, values);
+      return data;
+    } catch (err) {
+      // log errors.
+      console.error(err);
+      throw err;
+    } finally {
+      client.release((err) => {
+        if (err) throw err;
+      });
+    }
+  },
+};
