@@ -9,8 +9,31 @@
 
 # Context
 
+This will provide an application programing interface (API) that can be consumed by web client by the same name.
+
 ## Goal
 
-# User Requirements
+- To allow users to upload a new movie, TV show to their collection.
+- To make it easy to manage your inventory.
+- Provide tools to help pick your next movie to watch.
+
+# Requirements
+
+- Postgres database installed.
+- Server running this api.
 
 # API Endpoints
+
+\$ (Dynamic) Any word followed by $ means that that word in the URL is dynamic. This will usually be the ID of the item.
+
+| API endpoint                       | Description                                                       |
+| ---------------------------------- | ----------------------------------------------------------------- |
+| **api/v1/login**                   | Login to your account.                                            |
+| **api/v1/register**                | Register a new user.                                              |
+| **api/v1/collection**              | View your collection.                                             |
+| **api/v1/collection/$A**           | Show all collection alphabetized by arg. Ex. View by letter **A** |
+| **api/v1/collection/new**          | Add new movie or TV show to collection.                           |
+| **api/v1/collection/$item**        | Add new movie or TV show to collection.                           |
+| **api/v1/collection/$item/update** | Update current movie or TV show.                                  |
+| **api/v1/collection/$item/delete** | Remove current movie or TV show from collection.                  |
+| **api/v1/collection/random**       | Select a random movie or TV show from the collection.             |
