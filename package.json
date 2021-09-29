@@ -25,8 +25,10 @@
     "lint": "eslint --ext js .",
     "lint:fix": "eslint --ext js . --fix",
     "test": "jest",
-    "start:dev": "nodemon .",
-    "start": "node ."
+    "env-dev": "NODE_ENV=$NODE_ENV nodemon .",
+    "env-prod": "NODE_ENV=$NODE_ENV node .",
+    "start:dev": "NODE_ENV=developement npm run env-dev",
+    "start": "NODE_ENV=production npm run env-prod"
   },
   "dependencies": {
     "dotenv": "^10.0.0",

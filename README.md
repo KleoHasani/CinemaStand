@@ -24,6 +24,7 @@
   - [Installation](#installation)
     - [Clone](#clone)
     - [Install](#install)
+    - [Set-Up](#set-up)
     - [Start](#start)
     - [Dev](#dev)
   - [Build](#build)
@@ -53,6 +54,25 @@
 
     ```npm
     npm install
+    ```
+
+  - ### Set-Up
+
+    - Install Postgres Database.
+    - Config Postgres with user.
+    - Run "./scripts/init.sh" script.
+    - Create ".env.dev" file in project root directory.
+    - Config (DEV enviorment only)
+
+    ```dotenv
+      HOST="localhost"
+      PORT=8080
+
+      DB_HOST="127.0.0.1"
+      DB_PORT=5432
+      DB_DATABASE="cinemastand"
+      DB_NAME="yourdbusername"
+      DB_PASSWORD="yourpasswordhere"
     ```
 
   - ### Start
