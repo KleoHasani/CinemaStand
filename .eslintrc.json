@@ -3,6 +3,8 @@
   "extends": ["airbnb", "airbnb/hooks", "prettier"],
   "rules": {
     "prettier/prettier": "error",
+    "no-plusplus": "off",
+    "no-await-in-loop": "off",
     "no-console": "off"
   }
 }

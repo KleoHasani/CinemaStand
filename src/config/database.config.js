@@ -11,22 +11,44 @@ const pool = new Pool({
   max: 20,
 });
 
-module.exports = {
-  pool,
-  query: async (sql, values) => {
-    let client = null;
-    try {
-      client = await pool.connect();
-      const data = await client.query(sql, values);
-      return data;
-    } catch (err) {
-      // log errors.
-      console.error(err);
-      throw err;
-    } finally {
-      client.release((err) => {
-        if (err) throw err;
-      });
+async function query(sql, values) {
+  let client = null;
+  try {
+    client = await pool.connect();
+    const data = await client.query(sql, values);
+    return data;
+  } catch (err) {
+    // log errors.
+    console.error(err);
+    throw err;
+  } finally {
+    client.release((err) => {
+      if (err) throw err;
+    });
+  }
+}
+
+async function* queries(q) {
+  let client = null;
+  try {
+    client = await pool.connect();
+    for (let i = 0; i < queries.length; i++) {
+      const { rows } = await client.query(q[i].sql, q[i].values);
+      yield rows;
     }
-  },
+  } catch (err) {
+    // log errors.
+    console.error(err);
+    yield null;
+    throw err;
+  } finally {
+    client.release((err) => {
+      if (err) throw err;
+    });
+  }
+}
+
+module.exports = {
+  query,
+  queries,
 };
