@@ -27,7 +27,6 @@
     - [Set-Up](#set-up)
     - [Start](#start)
     - [Dev](#dev)
-  - [Build](#build)
   - [Test](#test)
 - [Authors](#authors)
 - [Usage](#usage)
@@ -61,19 +60,46 @@
     - Install Postgres Database.
     - Config Postgres with user.
     - Run "./scripts/init.sh" script.
-    - Create ".env.dev" file in project root directory.
-    - Config (DEV enviorment only)
+    - Create ".env" files in \"./env\".
 
-    ```dotenv
-      HOST="localhost"
-      PORT=8080
+      **.env**
 
-      DB_HOST="127.0.0.1"
-      DB_PORT=5432
-      DB_DATABASE="cinemastand"
-      DB_NAME="yourdbusername"
-      DB_PASSWORD="yourpasswordhere"
-    ```
+      ```dotenv
+        DOMAIN="youralloweddomain"
+        PORT=80
+
+        DB_HOST="yourdbIPaddress"
+        DB_PORT=5432
+        DB_DATABASE="cinemastand"
+        DB_NAME="yourdbusername"
+        DB_PASSWORD="yourpasswordhere"
+      ```
+
+      **.env.dev**
+
+      ```dotenv
+        DOMAIN="localhost"
+        PORT=8080
+
+        DB_HOST="127.0.0.1"
+        DB_PORT=5432
+        DB_DATABASE="cinemastand_dev"
+        DB_NAME="yourdbusername"
+        DB_PASSWORD="yourpasswordhere"
+      ```
+
+      **.env.test**
+
+      ```dotenv
+        DOMAIN="localhost"
+        PORT=8080
+
+        DB_HOST="127.0.0.1"
+        DB_PORT=5432
+        DB_DATABASE="cinemastand_test"
+        DB_NAME="yourdbusername"
+        DB_PASSWORD="yourpasswordhere"
+      ```
 
   - ### Start
 
@@ -85,12 +111,6 @@
     ```npm
     npm run start:dev
     ```
-
-- ## Build
-
-  ```npm
-  npm run build
-  ```
 
 - ## Test
 
