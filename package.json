@@ -24,15 +24,21 @@
   "scripts": {
     "lint": "eslint --ext js .",
     "lint:fix": "eslint --ext js . --fix",
-    "test": "jest",
     "env-dev": "NODE_ENV=$NODE_ENV nodemon .",
     "env-prod": "NODE_ENV=$NODE_ENV node .",
     "start:dev": "NODE_ENV=developement npm run env-dev",
-    "start": "NODE_ENV=production npm run env-prod"
+    "start": "NODE_ENV=production npm run env-prod",
+    "test": "jest"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "http-errors": "^1.8.0",
+    "jsonwebtoken": "^8.5.1",
+    "passport": "^0.5.0",
+    "passport-jwt": "^4.0.0",
     "pg": "^8.7.1"
   },
   "devDependencies": {

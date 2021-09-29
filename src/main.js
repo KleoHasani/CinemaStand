@@ -1,29 +1,41 @@
 const { resolve } = require("path");
 const { config } = require("dotenv");
 
-// Config env.
-config({ path: resolve(process.env.NODE_ENV === "production" ? "env/.env.prod" : "env/.env.dev") });
-
 const express = require("express");
+const cors = require("cors");
 
-const HOST = process.env.HOST || "127.0.0.1";
+// Config env.
+const ENV = process.env.NODE_ENV;
+config({ path: resolve(ENV === "production" ? "env/.env.prod" : "env/.env.dev") });
+
+// Server port.
 const PORT = parseInt(process.env.PORT, 10) || 8081;
 
+// Routes import
 const authRoute = require("./routers/auth.route");
 
+// Start express app.
 const app = express();
-
-// Middleware
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
 
 // Disable headers
 app.disable("x-powered-by");
+
+// Middleware
+app.use(express.json({ type: "application/json" }));
+app.use(express.urlencoded({ extended: false }));
+app.use(
+  cors({
+    origin: process.env.DOMAIN,
+    methods: "GET,PATCH,POST,DELETE",
+    allowedHeaders: ["content-type", "authorization", "x-refresh"],
+    exposedHeaders: ["authorization", "x-refresh"],
+  })
+);
 
 // Routes
 app.use("/api/v1/", authRoute);
 
 // Start API
-app.listen(PORT, async () => {
-  console.info(`API is live on http://${HOST}:${PORT}`);
+app.listen(PORT, () => {
+  if (ENV === "developement" || ENV === "test") console.info(`API is live on http://localhost:${PORT}`);
 });
