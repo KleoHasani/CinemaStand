@@ -11,6 +11,36 @@ const pool = new Pool({
   max: 20,
 });
 
+/**
+ * Create connection, to execute queries.
+ * @returns {PoolClient}
+ */
+async function connect() {
+  try {
+    return pool.connect();
+  } catch (err) {
+    throw err;
+  }
+}
+
+/**
+ * Disconnect client from pool.
+ * @param {PoolClient} client
+ */
+function disconnect(client) {
+  client.release((err) => {
+    if (err) throw err;
+  });
+}
+
+/**
+ * Safe query.
+ * Create connection, executes query, and release client.
+ * No need to create connection before calling this function.
+ * @param {String} sql
+ * @param {[any]} values
+ * @returns {QueryResult<any>}
+ */
 async function query(sql, values) {
   let client = null;
   try {
@@ -18,8 +48,6 @@ async function query(sql, values) {
     const data = await client.query(sql, values);
     return data;
   } catch (err) {
-    // log errors.
-    console.error(err);
     throw err;
   } finally {
     client.release((err) => {
@@ -28,27 +56,4 @@ async function query(sql, values) {
   }
 }
 
-async function* queries(q) {
-  let client = null;
-  try {
-    client = await pool.connect();
-    for (let i = 0; i < queries.length; i++) {
-      const { rows } = await client.query(q[i].sql, q[i].values);
-      yield rows;
-    }
-  } catch (err) {
-    // log errors.
-    console.error(err);
-    yield null;
-    throw err;
-  } finally {
-    client.release((err) => {
-      if (err) throw err;
-    });
-  }
-}
-
-module.exports = {
-  query,
-  queries,
-};
+module.exports = { query, connect, disconnect };

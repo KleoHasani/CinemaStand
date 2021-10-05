@@ -5,6 +5,7 @@
     "prettier/prettier": "error",
     "no-plusplus": "off",
     "no-await-in-loop": "off",
+    "no-useless-catch": "off",
     "no-console": "off"
   }
 }

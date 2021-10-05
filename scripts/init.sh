@@ -21,8 +21,13 @@ echo $'|-----------------------------|\n'
     echo $'\nCreating Tables\n'
 
     psql postgresql://$db_user:$db_pass@$db_host:$db_port/cinemastand_prod -f ./createTbls.sql
+    psql postgresql://$db_user:$db_pass@$db_host:$db_port/cinemastand_prod -f ./populateTbls.sql
+
     psql postgresql://$db_user:$db_pass@$db_host:$db_port/cinemastand_dev -f ./createTbls.sql
+    psql postgresql://$db_user:$db_pass@$db_host:$db_port/cinemastand_dev -f ./populateTbls.sql
+
     psql postgresql://$db_user:$db_pass@$db_host:$db_port/cinemastand_test -f ./createTbls.sql
+    psql postgresql://$db_user:$db_pass@$db_host:$db_port/cinemastand_test -f ./populateTbls.sql
 
     echo $'\n|-------------|'
     echo "|  All done   |"

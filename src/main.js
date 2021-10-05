@@ -11,8 +11,6 @@ config({ path: resolve(ENV === "production" ? "env/.env.prod" : "env/.env.dev") 
 // Server port.
 const PORT = parseInt(process.env.PORT, 10) || 8081;
 
-const { queries } = require("./config/database.config");
-
 // Routes import
 const authRoute = require("./routers/auth.route");
 
@@ -38,10 +36,6 @@ app.use(
 app.use("/api/v1/", authRoute);
 
 // Start API
-app.listen(PORT, async () => {
+app.listen(PORT, () => {
   if (ENV === "developement" || ENV === "test") console.info(`API is live on http://localhost:${PORT}`);
-
-  const data = queries([{ sql: "Select now();", values: [] }]);
-  console.log(await (await data.next()).value);
-  console.log(await (await data.next()).done);
 });
