@@ -4,6 +4,7 @@ set -e
 
 echo "|-----------------------------|"
 echo "|  Welcome to CINEMA STAND    |"
+echo "|     Generating Database     |"
 echo $'|-----------------------------|\n'
 
   if [[ "$OSTYPE" == "linux-gnu"* ]]; then
