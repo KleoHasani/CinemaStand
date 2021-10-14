@@ -11,13 +11,13 @@ const { genAccessToken, genRefreshToken } = require("../helpers/token.helper");
  */
 async function login(req, res) {
   // Get data from request body.
-  const { username, password } = req.body;
+  const { email, password } = req.body;
 
-  const SQL_S = 'SELECT id, username, password FROM public."tblUsers" WHERE username = $1;';
+  const SQLLogin = 'SELECT id, email, password FROM public."tblUsers" WHERE email = $1;';
 
   try {
     const client = await connect();
-    const { rows } = await client.query(SQL_S, [username]);
+    const { rows } = await client.query(SQLLogin, [email]);
 
     // Check username exists.
     if (rows.length === 0)
@@ -51,16 +51,24 @@ async function register(req, res) {
   // Get data from request body.
   const { firstname, lastname, email, password } = req.body;
 
-  const SQL_S = 'INSERT INTO public."tblUsers" (firstname, lastname, email, password) VALUES ($1, $2, $3, $4);';
+  const SQLCheckEmail = 'SELECT id FROM public."tblUsers" WHERE email = $1;';
+  const SQLRegister = 'INSERT INTO public."tblUsers" (firstname, lastname, email, password) VALUES ($1, $2, $3, $4);';
 
   try {
     const client = await connect();
+
+    // Check email does not exist.
+    const emailCheck = await client.query(SQLCheckEmail, [email]);
+
+    if (emailCheck.rowCount === 1)
+      return res.status(200).json(httpResponse(200, RESPONSE_STATUS.fail, "Email already exists", null));
+
     // HASH password.
     const hash = await encrypt(password);
 
-    const { rowCount } = await client.query(SQL_S, [firstname, lastname, email, hash]);
+    const registerUser = await client.query(SQLRegister, [firstname, lastname, email, hash]);
 
-    if (rowCount !== 1)
+    if (registerUser.rowCount !== 1)
       return res.status(200).json(httpResponse(200, RESPONSE_STATUS.fail, "Unable to create new user", null));
 
     return res.status(201).json(httpResponse(200, RESPONSE_STATUS.pass, "User created", null));
