@@ -121,32 +121,35 @@ Kleo Hasani
 
 <small>Test Example:
 
-| File   | Test         | Name           | Description | Status                                                    |
-| :----- | :----------- | :------------- | :---------- | --------------------------------------------------------- |
-| Test 1 | ExampleTest  | Test 1 Testing | Pass        | <p style="color: green; text-align: center;">&#10003;</p> |
-| Test 2 | ExampleTest2 | Test 2 Testing | Fail        | <p style="color: red; text-align: center;">&#65794;</p>   |
+| File   | Method | Endpoint      | Test     | Name           | Description | Status   |
+| :----- | :----- | :------------ | :------- | -------------- | ----------- | -------- |
+| Test 1 | GET    | /api/v1/test1 | TestPass | This is a test | Test passed | &#10003; |
+| Test 2 | POST   | /api/v2/test2 | TestFail | This is a test | Test failed | &#65794; |
 
 </small>
 
-| File | Test                               | Name                 | Description                                 | Status                                                    |
-| :--- | :--------------------------------- | :------------------- | :------------------------------------------ | --------------------------------------------------------- |
-| Auth | POST - Register - /api/v1/register | should register user | User registered                             | <p style="color: green; text-align: center;">&#10003;</p> |
-|      |                                    | should not register  | First name can not be empty                 | <p style="color: green; text-align: center;">&#10003;</p> |
-|      |                                    |                      | First name is not valid                     | <p style="color: green; text-align: center;">&#10003;</p> |
-|      |                                    |                      | SQL_INJECTION_DETECTED                      | <p style="color: red; text-align: center;">&#65794;</p>   |
-|      |                                    |                      | Last name can not be empty                  | <p style="color: green; text-align: center;">&#10003;</p> |
-|      |                                    |                      | Last name is not valid                      | <p style="color: green; text-align: center;">&#10003;</p> |
-|      |                                    |                      | Last name is not valid                      | <p style="color: green; text-align: center;">&#10003;</p> |
-|      |                                    |                      | SQL_INJECTION_DETECTED                      | <p style="color: red; text-align: center;">&#65794;</p>   |
-|      |                                    |                      | Email can not be empty                      | <p style="color: green; text-align: center;">&#10003;</p> |
-|      |                                    |                      | Email already exists                        | <p style="color: green; text-align: center;">&#10003;</p> |
-|      |                                    |                      | Password can not be empty                   | <p style="color: green; text-align: center;">&#10003;</p> |
-|      |                                    |                      | Password is not valid                       | <p style="color: green; text-align: center;">&#10003;</p> |
-|      |                                    |                      | Password must contain at least 8 characters | <p style="color: green; text-align: center;">&#10003;</p> |
-|      |                                    |                      | SQL_INJECTION_DETECTED                      | <p style="color: red; text-align: center;">&#65794;</p>   |
-|      | POST - Login - /api/v1/login       | should login         | User authenticated                          | <p style="color: green; text-align: center;">&#10003;</p> |
-|      |                                    |                      | Email can not be empty                      | <p style="color: green; text-align: center;">&#10003;</p> |
-|      |                                    |                      | Email already exists                        | <p style="color: green; text-align: center;">&#10003;</p> |
-|      |                                    |                      | Password can not be empty                   | <p style="color: green; text-align: center;">&#10003;</p> |
-|      |                                    |                      | Password is not valid                       | <p style="color: green; text-align: center;">&#10003;</p> |
-|      |                                    |                      | SQL_INJECTION_DETECTED                      | <p style="color: red; text-align: center;">&#65794;</p>   |
+| File         | Method | Endpoint                  | Test     | Name                | Description                                 | Status   |
+| :----------- | :----- | :------------------------ | :------- | ------------------- | ------------------------------------------- | -------- |
+| auth.test.js | POST   | **/api/v1/register**      | Register | should register     | User registered                             | &#10003; |
+| \-           | \-     | /api/v1/register          | Register | should not register | First name can not be empty                 | &#10003; |
+| \-           | \-     | /api/v1/register          | Register | should not register | SQL_INJECTION_DETECTED                      | &#10003; |
+| \-           | \-     | /api/v1/register          | Register | should not register | First name is not valid                     | &#10003; |
+| \-           | \-     | /api/v1/register          | Register | should not register | Last name can not be empty                  | &#10003; |
+| \-           | \-     | /api/v1/register          | Register | should not register | Last name is not valid                      | &#10003; |
+| \-           | \-     | /api/v1/register          | Register | should not register | Last name is not valid                      | &#10003; |
+| \-           | \-     | /api/v1/register          | Register | should not register | SQL_INJECTION_DETECTED                      | &#10003; |
+| \-           | \-     | /api/v1/register          | Register | should not register | Email can not be empty                      | &#10003; |
+| \-           | \-     | /api/v1/register          | Register | should not register | Email already exists                        | &#10003; |
+| \-           | \-     | /api/v1/register          | Register | should not register | Password can not be empty                   | &#10003; |
+| \-           | \-     | /api/v1/register          | Register | should not register | Password is not valid                       | &#10003; |
+| \-           | \-     | /api/v1/register          | Register | should not register | Password must contain at least 8 characters | &#10003; |
+| \-           | \-     | /api/v1/register          | Register | should not register | SQL_INJECTION_DETECTED                      | &#10003; |
+| \-           | \-     | **/api/v1/login**         | Login    | should login        | User authenticated                          | &#10003; |
+| \-           | \-     | /api/v1/login             | Login    | should not login    | Email can not be empty                      | &#10003; |
+| \-           | \-     | /api/v1/login             | Login    | should not login    | Email already exists                        | &#10003; |
+| \-           | \-     | /api/v1/login             | Login    | should not login    | Password can not be empty                   | &#10003; |
+| \-           | \-     | /api/v1/login             | Login    | should not login    | Password is not valid                       | &#10003; |
+| \-           | \-     | /api/v1/login             | Login    | should not login    | SQL_INJECTION_DETECTED                      | &#10003; |
+| \-           | GET    | **/api/v1/token_refresh** | Token    | should refresh      | Token refreshed                             | &#65794; |
+| \-           | \-     | /api/v1/token_refresh     | Token    | should not refresh  | Missing token                               | &#65794; |
+| \-           | \-     | /api/v1/token_refresh     | Token    | should not refresh  | Bad token                                   | &#65794; |

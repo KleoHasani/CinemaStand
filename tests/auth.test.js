@@ -15,7 +15,7 @@ afterAll((done) => {
 
 // Register test.
 describe("POST - Register - /api/v1/register", () => {
-  test("should register user", async () => {
+  test("should register", async () => {
     const response = await request.post("/api/v1/register").send({
       firstname: "admin",
       lastname: "admin",
