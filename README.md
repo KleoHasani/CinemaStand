@@ -59,21 +59,8 @@
 
     - Install Postgres Database.
     - Config Postgres with user.
-    - Run "./scripts/init.sh" script.
-    - Create ".env" files in \"./env\".
-
-      **.env**
-
-      ```dotenv
-        DOMAIN="youralloweddomain"
-        PORT=80
-
-        DB_HOST="yourdbIPaddress"
-        DB_PORT=5432
-        DB_DATABASE="cinemastand"
-        DB_NAME="yourdbusername"
-        DB_PASSWORD="yourpasswordhere"
-      ```
+    - Run "./scripts/init_db.sh" script.
+    - Run "./scripts/init_env.sh" script. (Make sure OpenSSL) is installed.
 
       **.env.dev**
 
