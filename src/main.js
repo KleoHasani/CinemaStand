@@ -6,7 +6,7 @@ const cors = require("cors");
 
 // Config env.
 const ENV = process.env.NODE_ENV;
-config({ path: resolve(ENV === "production" ? "env/.env.prod" : "env/.env.dev") });
+config({ path: resolve(ENV === "developement" ? "env/.env.dev" : "env/.env.test") });
 
 // Server port.
 const PORT = parseInt(process.env.PORT, 10) || 8081;

@@ -1,4 +1,4 @@
-const { httpResponse, http200, PASS, FAIL, http201 } = require("../helpers/response.helper");
+const { httpResponse, http200, http201, RESPONSE_STATUS } = require("../helpers/response.helper");
 const { validate, encrypt } = require("../helpers/bcrypt.helper");
 const { genAccessToken, genRefreshToken } = require("../helpers/token.helper");
 const { connect } = require("../config/database.config");
@@ -33,9 +33,10 @@ async function login(req, res) {
     res.setHeader("authorization", `Bearer ${ACCESS_TOKEN}`);
     res.setHeader("x-refresh", REFRESH_TOKEN);
 
-    return res.status(200).json(http200(PASS, "Authenticated"));
+    return res.status(200).json(http200(RESPONSE_STATUS.pass, "Authenticated"));
   } catch (err) {
-    return res.status(400).json(httpResponse(400, FAIL, err, null));
+    console.log(err);
+    return res.status(400).json(httpResponse(400, RESPONSE_STATUS.fail, err, null));
   }
 }
 
@@ -61,8 +62,15 @@ async function register(req, res) {
 
     return res.status(201).json(http201());
   } catch (err) {
-    return res.status(400).json(httpResponse(400, FAIL, err, null));
+    return res.status(400).json(httpResponse(400, RESPONSE_STATUS.fail, err, null));
   }
 }
 
-module.exports = { login, register };
+/**
+ * Handle refresh.
+ * @param {Request} req
+ * @param {Response} res
+ */
+async function refresh(req, res) {}
+
+module.exports = { login, register, refresh };

@@ -1,5 +1,6 @@
 const { sign, verify } = require("jsonwebtoken");
 
+// Token Constants.
 const TOKEN_OPTS = {
   algorithm: "HS512",
   audience: "CinemaStand-Client",

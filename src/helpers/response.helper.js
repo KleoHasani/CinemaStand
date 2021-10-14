@@ -1,5 +1,7 @@
-const FAIL = 0;
-const PASS = 1;
+const RESPONSE_STATUS = {
+  fail: 0,
+  pass: 1,
+};
 
 function httpResponse(code, status, msg, data) {
   return {
@@ -10,22 +12,22 @@ function httpResponse(code, status, msg, data) {
   };
 }
 
-function http200(status = PASS, msg = "Success", data = null) {
+function http200(msg = "Success", data = null) {
   return {
     code: 200,
-    status,
+    status: RESPONSE_STATUS.pass,
     msg,
     data,
   };
 }
 
-function http201(status = PASS, msg = "Created", data = null) {
+function http201(msg = "Created", data = null) {
   return {
     code: 201,
-    status,
+    status: RESPONSE_STATUS.pass,
     msg,
     data,
   };
 }
 
-module.exports = { PASS, FAIL, httpResponse, http200, http201 };
+module.exports = { httpResponse, http200, http201, RESPONSE_STATUS };
