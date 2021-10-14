@@ -40,6 +40,7 @@ if [[ "$exec_continue" =~ ^([yY])$ ]]; then
 PORT=8080
 DB_HOST=\"$db_host\"
 DB_PORT=$db_port
+HOST=\"localhost\"
 DB_DATABASE=\"cinemastand_dev\"
 DB_NAME=\"$db_user\"
 DB_PASSWORD=\"$db_pass\"
@@ -48,6 +49,7 @@ REFRESH_TOKEN=$(openssl rand -hex 20)" >> .env.dev
 
   echo "DOMAIN=\"localhost\"
 PORT=8080
+HOST=\"localhost\"
 DB_HOST=\"$db_host\"
 DB_PORT=$db_port
 DB_DATABASE=\"cinemastand_test\"

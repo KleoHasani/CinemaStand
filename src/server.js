@@ -1,7 +1,9 @@
 const { resolve } = require("path");
 const { config } = require("dotenv");
+const { createServer } = require("http");
 
 const express = require("express");
+const helmet = require("helmet");
 const cors = require("cors");
 
 // Config env.
@@ -10,6 +12,8 @@ config({ path: resolve(ENV === "developement" ? "env/.env.dev" : "env/.env.test"
 
 // Server port.
 const PORT = parseInt(process.env.PORT, 10) || 8081;
+// Server host.
+const HOST = process.env.HOST || "localhost";
 
 // Routes import
 const authRoute = require("./routers/auth.route");
@@ -17,12 +21,10 @@ const authRoute = require("./routers/auth.route");
 // Start express app.
 const app = express();
 
-// Disable headers
-app.disable("x-powered-by");
-
 // Middleware
 app.use(express.json({ type: "application/json" }));
 app.use(express.urlencoded({ extended: false }));
+app.use(helmet());
 app.use(
   cors({
     origin: process.env.DOMAIN,
@@ -35,7 +37,10 @@ app.use(
 // Routes
 app.use("/api/v1/", authRoute);
 
-// Start API
-app.listen(PORT, () => {
-  if (ENV === "developement" || ENV === "test") console.info(`API is live on http://localhost:${PORT}`);
+const server = createServer(app);
+
+server.listen(PORT, HOST, () => {
+  if (ENV === "developement") console.info(`API is live on http://${HOST}:${PORT}`);
 });
+
+module.exports = { server };

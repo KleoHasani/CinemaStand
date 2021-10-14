@@ -121,16 +121,32 @@ Kleo Hasani
 
 <small>Test Example:
 
-| Test        | Name          | Status                                                    |
-| :---------- | :------------ | :-------------------------------------------------------- |
-| ExampleTest | Test 1 - Pass | <p style="color: green; text-align: center;">&#10003;</p> |
-| ExampleTest | Test 2 - Fail | <p style="color: red; text-align: center;">&#65794;</p>   |
+| File   | Test         | Name           | Description | Status                                                    |
+| :----- | :----------- | :------------- | :---------- | --------------------------------------------------------- |
+| Test 1 | ExampleTest  | Test 1 Testing | Pass        | <p style="color: green; text-align: center;">&#10003;</p> |
+| Test 2 | ExampleTest2 | Test 2 Testing | Fail        | <p style="color: red; text-align: center;">&#65794;</p>   |
 
 </small>
 
----
-
-| Test | Name | Status |
-| :--- | :--- | :----- |
-
----
+| File | Test                               | Name                 | Description                                 | Status                                                    |
+| :--- | :--------------------------------- | :------------------- | :------------------------------------------ | --------------------------------------------------------- |
+| Auth | POST - Register - /api/v1/register | should register user | User registered                             | <p style="color: green; text-align: center;">&#10003;</p> |
+|      |                                    | should not register  | First name can not be empty                 | <p style="color: green; text-align: center;">&#10003;</p> |
+|      |                                    |                      | First name is not valid                     | <p style="color: green; text-align: center;">&#10003;</p> |
+|      |                                    |                      | SQL_INJECTION_DETECTED                      | <p style="color: red; text-align: center;">&#65794;</p>   |
+|      |                                    |                      | Last name can not be empty                  | <p style="color: green; text-align: center;">&#10003;</p> |
+|      |                                    |                      | Last name is not valid                      | <p style="color: green; text-align: center;">&#10003;</p> |
+|      |                                    |                      | Last name is not valid                      | <p style="color: green; text-align: center;">&#10003;</p> |
+|      |                                    |                      | SQL_INJECTION_DETECTED                      | <p style="color: red; text-align: center;">&#65794;</p>   |
+|      |                                    |                      | Email can not be empty                      | <p style="color: green; text-align: center;">&#10003;</p> |
+|      |                                    |                      | Email already exists                        | <p style="color: green; text-align: center;">&#10003;</p> |
+|      |                                    |                      | Password can not be empty                   | <p style="color: green; text-align: center;">&#10003;</p> |
+|      |                                    |                      | Password is not valid                       | <p style="color: green; text-align: center;">&#10003;</p> |
+|      |                                    |                      | Password must contain at least 8 characters | <p style="color: green; text-align: center;">&#10003;</p> |
+|      |                                    |                      | SQL_INJECTION_DETECTED                      | <p style="color: red; text-align: center;">&#65794;</p>   |
+|      | POST - Login - /api/v1/login       | should login         | User authenticated                          | <p style="color: green; text-align: center;">&#10003;</p> |
+|      |                                    |                      | Email can not be empty                      | <p style="color: green; text-align: center;">&#10003;</p> |
+|      |                                    |                      | Email already exists                        | <p style="color: green; text-align: center;">&#10003;</p> |
+|      |                                    |                      | Password can not be empty                   | <p style="color: green; text-align: center;">&#10003;</p> |
+|      |                                    |                      | Password is not valid                       | <p style="color: green; text-align: center;">&#10003;</p> |
+|      |                                    |                      | SQL_INJECTION_DETECTED                      | <p style="color: red; text-align: center;">&#65794;</p>   |

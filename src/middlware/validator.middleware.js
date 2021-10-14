@@ -1,30 +1,41 @@
 const { body, validationResult } = require("express-validator");
 const { httpResponse, RESPONSE_STATUS } = require("../helpers/response.helper");
 
+const SQL_INJEC_PREVENTION = /(['-]+)/;
+
 const validateRegister = [
   body("firstname")
     .notEmpty()
     .withMessage("First name can not be empty")
     .isString()
     .withMessage("First name is not valid")
-    .trim(),
+    .trim()
+    .not()
+    .matches(SQL_INJEC_PREVENTION)
+    .withMessage("SQL_INJECTION_DETECTED"),
   body("lastname")
     .notEmpty()
     .withMessage("Last name can not be empty")
     .isString()
     .withMessage("Last name is not valid")
-    .trim(),
+    .trim()
+    .not()
+    .matches(SQL_INJEC_PREVENTION)
+    .withMessage("SQL_INJECTION_DETECTED"),
   body("email")
     .notEmpty()
     .withMessage("Email can not be empty")
     .isEmail()
     .normalizeEmail({ all_lowercase: true })
     .trim()
-    .withMessage("Not a valid email"),
+    .withMessage("Email is not valid"),
   body("password")
     .notEmpty()
     .withMessage("Password can not be empty")
+    .isString()
+    .withMessage("Password is not valid")
     .trim()
+    .isLength({ min: 8, max: 256 })
     .withMessage("Password must contain at least 8 characters"),
 ];
 
@@ -35,8 +46,16 @@ const validateLogin = [
     .isEmail()
     .normalizeEmail({ all_lowercase: true })
     .trim()
-    .withMessage("Not a valid email"),
-  body("password").notEmpty().withMessage("Password can not be empty").trim(),
+    .withMessage("Email is not valid"),
+  body("password")
+    .notEmpty()
+    .withMessage("Password can not be empty")
+    .isString()
+    .withMessage("Password is not valid")
+    .trim()
+    .not()
+    .matches(SQL_INJEC_PREVENTION)
+    .withMessage("SQL_INJECTION_DETECTED"),
 ];
 
 /**

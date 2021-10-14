@@ -2,7 +2,7 @@
   "name": "cinemastand-api",
   "description": "(API) CinemaStand.",
   "version": "0.0.1",
-  "main": "src/main.js",
+  "main": "src/server.js",
   "license": "MIT",
   "author": {
     "name": "Kleo Hasani",
@@ -28,7 +28,7 @@
     "env-prod": "NODE_ENV=$NODE_ENV node .",
     "start:dev": "NODE_ENV=developement npm run env-dev",
     "start": "NODE_ENV=production npm run env-prod",
-    "test": "jest"
+    "test": "NODE_ENV=test jest --detectOpenHandles"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -36,10 +36,13 @@
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "express-validator": "^6.13.0",
+    "helmet": "^4.6.0",
+    "jest": "^27.2.5",
     "jsonwebtoken": "^8.5.1",
     "passport": "^0.5.0",
     "passport-jwt": "^4.0.0",
-    "pg": "^8.7.1"
+    "pg": "^8.7.1",
+    "supertest": "^6.1.6"
   },
   "devDependencies": {
     "eslint": "^7.32.0",
