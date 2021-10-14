@@ -4,6 +4,6 @@
  * @param {Response} res
  * @param {NextFunction} next
  */
-function validateToken(req, res, next) {}
+function authenticateToken(req, res, next) {}
 
-module.exports = { validateToken };
+module.exports = { authenticateToken };

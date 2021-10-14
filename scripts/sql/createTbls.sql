@@ -1,7 +1,9 @@
 CREATE TABLE IF NOT EXISTS public."tblUsers"
 (
     id serial NOT NULL,
-    username character varying(256) NOT NULL,
+    firstname text NOT NULL,
+    lastname text NOT NULL,
+    email character varying(256) NOT NULL,
     password character varying(256) NOT NULL,
     PRIMARY KEY (id)
 );
