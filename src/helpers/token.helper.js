@@ -27,13 +27,17 @@ function genAccessToken(payload) {
 /**
  * Verify access token.
  * @param {String} token
- * @returns {Boolean}
+ * @returns {String | Jwt}
  */
 function verifyAccessToken(token) {
-  return verify(token, process.env.ACCESS_TOKEN, {
-    algorithm: TOKEN_OPTS.algorithm,
-    issuer: TOKEN_OPTS.issuer,
-  });
+  try {
+    return verify(token, process.env.ACCESS_TOKEN, {
+      algorithm: TOKEN_OPTS.algorithm,
+      issuer: TOKEN_OPTS.issuer,
+    });
+  } catch (err) {
+    return null;
+  }
 }
 
 /**
@@ -53,13 +57,17 @@ function genRefreshToken(payload) {
 /**
  * Verify refresh token.
  * @param {String} token
- * @returns {Boolean}
+ * @returns {String | Jwt}
  */
 function verifyRefreshToken(token) {
-  return verify(token, process.env.REFRESH_TOKEN, {
-    algorithm: TOKEN_OPTS.algorithm,
-    issuer: TOKEN_OPTS.issuer,
-  });
+  try {
+    return verify(token, process.env.REFRESH_TOKEN, {
+      algorithm: TOKEN_OPTS.algorithm,
+      issuer: TOKEN_OPTS.issuer,
+    });
+  } catch (err) {
+    return null;
+  }
 }
 
 module.exports = { genAccessToken, verifyAccessToken, genRefreshToken, verifyRefreshToken };

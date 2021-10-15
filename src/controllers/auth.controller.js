@@ -32,7 +32,7 @@ async function login(req, res) {
 
     // Append token to response.
     res.setHeader("authorization", `Bearer ${ACCESS_TOKEN}`);
-    res.setHeader("x-refresh", REFRESH_TOKEN);
+    res.setHeader("refresh", REFRESH_TOKEN);
 
     return res.status(200).json(httpResponse(200, RESPONSE_STATUS.pass, "Authenticated", null));
   } catch (err) {
@@ -79,6 +79,8 @@ async function register(req, res) {
  * @param {Request} req
  * @param {Response} res
  */
-async function refresh(req, res) {}
+async function refresh(req, res) {
+  res.status(200).json({ ok: "OK" });
+}
 
 module.exports = { login, register, refresh };

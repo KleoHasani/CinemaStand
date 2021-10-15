@@ -37,12 +37,9 @@
     "express": "^4.17.1",
     "express-validator": "^6.13.0",
     "helmet": "^4.6.0",
-    "jest": "^27.2.5",
     "jsonwebtoken": "^8.5.1",
-    "passport": "^0.5.0",
-    "passport-jwt": "^4.0.0",
     "pg": "^8.7.1",
-    "supertest": "^6.1.6"
+    "redis": "^3.1.2"
   },
   "devDependencies": {
     "eslint": "^7.32.0",
@@ -50,6 +47,8 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
     "nodemon": "^2.0.12",
-    "prettier": "^2.4.1"
+    "prettier": "^2.4.1",
+    "jest": "^27.2.5",
+    "supertest": "^6.1.6"
   }
 }

@@ -29,8 +29,8 @@ app.use(
   cors({
     origin: process.env.DOMAIN,
     methods: "GET,PATCH,POST,DELETE",
-    allowedHeaders: ["content-type", "authorization", "x-refresh"],
-    exposedHeaders: ["authorization", "x-refresh"],
+    allowedHeaders: ["content-type", "authorization", "refresh"],
+    exposedHeaders: ["authorization", "refresh"],
   })
 );
 
