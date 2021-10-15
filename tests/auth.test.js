@@ -1,21 +1,19 @@
 /* eslint-disable no-undef */
 const { agent } = require("supertest");
 const { server } = require("../src/server");
-const { teardown } = require("./teardown");
 
 const request = agent(server);
 
 jest.setTimeout(5000);
 
 afterAll((done) => {
-  teardown();
   server.close();
   done();
 });
 
 // Register test.
 describe("POST - Register - /api/v1/register", () => {
-  test("should register", async () => {
+  test("Should register", async () => {
     const response = await request.post("/api/v1/register").send({
       firstname: "admin",
       lastname: "admin",
@@ -30,7 +28,7 @@ describe("POST - Register - /api/v1/register", () => {
     expect(response.body.data).toBeNull();
   });
 
-  test("should not register (First name can not be empty)", async () => {
+  test("Should not register (First name can not be empty)", async () => {
     const response = await request.post("/api/v1/register").send({
       firstname: "",
       lastname: "admin",
@@ -45,7 +43,7 @@ describe("POST - Register - /api/v1/register", () => {
     expect(response.body.data).toBeNull();
   });
 
-  test("should not register (First name is not valid)", async () => {
+  test("Should not register (First name is not valid)", async () => {
     const response = await request.post("/api/v1/register").send({
       firstname: 123,
       lastname: "admin",
@@ -60,7 +58,7 @@ describe("POST - Register - /api/v1/register", () => {
     expect(response.body.data).toBeNull();
   });
 
-  test("should not register (SQL_INJECTION_DETECTED)", async () => {
+  test("Should not register (SQL_INJECTION_DETECTED)", async () => {
     const response = await request.post("/api/v1/register").send({
       firstname: "';--",
       lastname: "admin",
@@ -75,7 +73,7 @@ describe("POST - Register - /api/v1/register", () => {
     expect(response.body.data).toBeNull();
   });
 
-  test("should not register (Last name can not be empty)", async () => {
+  test("Should not register (Last name can not be empty)", async () => {
     const response = await request.post("/api/v1/register").send({
       firstname: "admin",
       lastname: "",
@@ -90,7 +88,7 @@ describe("POST - Register - /api/v1/register", () => {
     expect(response.body.data).toBeNull();
   });
 
-  test("should not register (Last name is not valid)", async () => {
+  test("Should not register (Last name is not valid)", async () => {
     const response = await request.post("/api/v1/register").send({
       firstname: "admin",
       lastname: 123,
@@ -105,7 +103,7 @@ describe("POST - Register - /api/v1/register", () => {
     expect(response.body.data).toBeNull();
   });
 
-  test("should not register (SQL_INJECTION_DETECTED)", async () => {
+  test("Should not register (SQL_INJECTION_DETECTED)", async () => {
     const response = await request.post("/api/v1/register").send({
       firstname: "admin",
       lastname: "';--",
@@ -120,7 +118,7 @@ describe("POST - Register - /api/v1/register", () => {
     expect(response.body.data).toBeNull();
   });
 
-  test("should not register (Email can not be empty)", async () => {
+  test("Should not register (Email can not be empty)", async () => {
     const response = await request.post("/api/v1/register").send({
       firstname: "admin",
       lastname: "admin",
@@ -135,7 +133,7 @@ describe("POST - Register - /api/v1/register", () => {
     expect(response.body.data).toBeNull();
   });
 
-  test("should not register (Email is not valid)", async () => {
+  test("Should not register (Email is not valid)", async () => {
     const response = await request.post("/api/v1/register").send({
       firstname: "admin",
       lastname: "admin",
@@ -150,7 +148,7 @@ describe("POST - Register - /api/v1/register", () => {
     expect(response.body.data).toBeNull();
   });
 
-  test("should not register (Email already exists)", async () => {
+  test("Should not register (Email already exists)", async () => {
     const response = await request.post("/api/v1/register").send({
       firstname: "admin",
       lastname: "admin",
@@ -165,7 +163,7 @@ describe("POST - Register - /api/v1/register", () => {
     expect(response.body.data).toBeNull();
   });
 
-  test("should not register (Password can not be empty)", async () => {
+  test("Should not register (Password can not be empty)", async () => {
     const response = await request.post("/api/v1/register").send({
       firstname: "admin",
       lastname: "admin",
@@ -180,7 +178,7 @@ describe("POST - Register - /api/v1/register", () => {
     expect(response.body.data).toBeNull();
   });
 
-  test("should not register (Password is not valid)", async () => {
+  test("Should not register (Password is not valid)", async () => {
     const response = await request.post("/api/v1/register").send({
       firstname: "admin",
       lastname: "admin",
@@ -195,7 +193,7 @@ describe("POST - Register - /api/v1/register", () => {
     expect(response.body.data).toBeNull();
   });
 
-  test("should not register (Password must contain at least 8 characters)", async () => {
+  test("Should not register (Password must contain at least 8 characters)", async () => {
     const response = await request.post("/api/v1/register").send({
       firstname: "admin",
       lastname: "admin",
@@ -213,7 +211,7 @@ describe("POST - Register - /api/v1/register", () => {
 
 // Login test.
 describe("POST - Login - /api/v1/login", () => {
-  test("should login", async () => {
+  test("Should login", async () => {
     const response = await request.post("/api/v1/login").send({
       email: "admin@admin.com",
       password: "admin123",
@@ -226,7 +224,7 @@ describe("POST - Login - /api/v1/login", () => {
     expect(response.body.data).toBeNull();
   });
 
-  test("should not login (Email can not be empty)", async () => {
+  test("Should not login (Email can not be empty)", async () => {
     const response = await request.post("/api/v1/login").send({
       email: "",
       password: "admin123",
@@ -239,7 +237,7 @@ describe("POST - Login - /api/v1/login", () => {
     expect(response.body.data).toBeNull();
   });
 
-  test("should not login (Email is not valid)", async () => {
+  test("Should not login (Email is not valid)", async () => {
     const response = await request.post("/api/v1/login").send({
       email: 123,
       password: "admin123",
@@ -252,7 +250,7 @@ describe("POST - Login - /api/v1/login", () => {
     expect(response.body.data).toBeNull();
   });
 
-  test("should not login (Unable to authenticate)", async () => {
+  test("Should not login (Unable to authenticate)", async () => {
     const response = await request.post("/api/v1/login").send({
       email: "admin123@admin.com",
       password: "admin123",
@@ -265,7 +263,7 @@ describe("POST - Login - /api/v1/login", () => {
     expect(response.body.data).toBeNull();
   });
 
-  test("should not login (Password can not be empty)", async () => {
+  test("Should not login (Password can not be empty)", async () => {
     const response = await request.post("/api/v1/login").send({
       email: "admin@admin.com",
       password: "",
@@ -278,7 +276,7 @@ describe("POST - Login - /api/v1/login", () => {
     expect(response.body.data).toBeNull();
   });
 
-  test("should not login (Password is not valid)", async () => {
+  test("Should not login (Password is not valid)", async () => {
     const response = await request.post("/api/v1/login").send({
       email: "admin@admin.com",
       password: 123,
@@ -291,7 +289,7 @@ describe("POST - Login - /api/v1/login", () => {
     expect(response.body.data).toBeNull();
   });
 
-  test("should not login (SQL_INJECTION_DETECTED)", async () => {
+  test("Should not login (SQL_INJECTION_DETECTED)", async () => {
     const response = await request.post("/api/v1/login").send({
       email: "admin@admin.com",
       password: "';--",
@@ -304,7 +302,7 @@ describe("POST - Login - /api/v1/login", () => {
     expect(response.body.data).toBeNull();
   });
 
-  test("should not login (Unable to authenticate)", async () => {
+  test("Should not login (Unable to authenticate)", async () => {
     const response = await request.post("/api/v1/login").send({
       email: "admin@admin.com",
       password: "admin1234",

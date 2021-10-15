@@ -32,9 +32,11 @@ function authenticateAccessToken(req, res, next) {
 function authenticateRefreshToken(req, res, next) {
   // Get token.
   const REF_TOKEN = req.headers.refresh;
+  // Get redirect back link.
+  const REDIRECT = req.headers.redirect;
 
   // Check if token exists.
-  if (!REF_TOKEN) return res.status(400).json(httpResponse(400, RESPONSE_STATUS.fail, "No token", null));
+  if (!REF_TOKEN || !REDIRECT) return res.status(400).json(httpResponse(400, RESPONSE_STATUS.fail, "No token", null));
 
   // Verify token.
   const token = verifyRefreshToken(REF_TOKEN);
@@ -51,6 +53,8 @@ function authenticateRefreshToken(req, res, next) {
   // Append token to response.
   res.setHeader("authorization", `Bearer ${ACCESS_TOKEN}`);
   res.setHeader("refresh", REFRESH_TOKEN);
+
+  res.status(200).json(httpResponse(200, RESPONSE_STATUS.pass, "Token refreshed.", REDIRECT));
 
   return next();
 }

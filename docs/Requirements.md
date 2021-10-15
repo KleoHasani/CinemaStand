@@ -25,6 +25,10 @@ This application is for movie buffes and collectors. CinemaStand provides a one 
 
 CinemaStand can movie data to your collection. Such data as title, subtitle, description, art cover.
 
-## User Needs
+## Requirements
 
-- Internet connection.
+- NodeJS
+- NPM
+- OpenSSL
+- Postgresql
+- Redis

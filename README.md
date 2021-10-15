@@ -128,28 +128,25 @@ Kleo Hasani
 
 </small>
 
-| File         | Method | Endpoint                  | Test     | Name                | Description                                 | Status   |
-| :----------- | :----- | :------------------------ | :------- | ------------------- | ------------------------------------------- | -------- |
-| auth.test.js | POST   | **/api/v1/register**      | Register | should register     | User registered                             | &#10003; |
-| \-           | \-     | /api/v1/register          | Register | should not register | First name can not be empty                 | &#10003; |
-| \-           | \-     | /api/v1/register          | Register | should not register | SQL_INJECTION_DETECTED                      | &#10003; |
-| \-           | \-     | /api/v1/register          | Register | should not register | First name is not valid                     | &#10003; |
-| \-           | \-     | /api/v1/register          | Register | should not register | Last name can not be empty                  | &#10003; |
-| \-           | \-     | /api/v1/register          | Register | should not register | Last name is not valid                      | &#10003; |
-| \-           | \-     | /api/v1/register          | Register | should not register | Last name is not valid                      | &#10003; |
-| \-           | \-     | /api/v1/register          | Register | should not register | SQL_INJECTION_DETECTED                      | &#10003; |
-| \-           | \-     | /api/v1/register          | Register | should not register | Email can not be empty                      | &#10003; |
-| \-           | \-     | /api/v1/register          | Register | should not register | Email already exists                        | &#10003; |
-| \-           | \-     | /api/v1/register          | Register | should not register | Password can not be empty                   | &#10003; |
-| \-           | \-     | /api/v1/register          | Register | should not register | Password is not valid                       | &#10003; |
-| \-           | \-     | /api/v1/register          | Register | should not register | Password must contain at least 8 characters | &#10003; |
-| \-           | \-     | /api/v1/register          | Register | should not register | SQL_INJECTION_DETECTED                      | &#10003; |
-| \-           | \-     | **/api/v1/login**         | Login    | should login        | User authenticated                          | &#10003; |
-| \-           | \-     | /api/v1/login             | Login    | should not login    | Email can not be empty                      | &#10003; |
-| \-           | \-     | /api/v1/login             | Login    | should not login    | Email already exists                        | &#10003; |
-| \-           | \-     | /api/v1/login             | Login    | should not login    | Password can not be empty                   | &#10003; |
-| \-           | \-     | /api/v1/login             | Login    | should not login    | Password is not valid                       | &#10003; |
-| \-           | \-     | /api/v1/login             | Login    | should not login    | SQL_INJECTION_DETECTED                      | &#10003; |
-| \-           | GET    | **/api/v1/token_refresh** | Token    | should refresh      | Token refreshed                             | &#65794; |
-| \-           | \-     | /api/v1/token_refresh     | Token    | should not refresh  | Missing token                               | &#65794; |
-| \-           | \-     | /api/v1/token_refresh     | Token    | should not refresh  | Bad token                                   | &#65794; |
+| File         | Method | Endpoint             | Test     | Name                | Description                                 | Status   |
+| :----------- | :----- | :------------------- | :------- | ------------------- | ------------------------------------------- | -------- |
+| auth.test.js | POST   | **/api/v1/register** | Register | should register     | User registered                             | &#10003; |
+| \-           | \-     | /api/v1/register     | Register | should not register | First name can not be empty                 | &#10003; |
+| \-           | \-     | /api/v1/register     | Register | should not register | SQL_INJECTION_DETECTED                      | &#10003; |
+| \-           | \-     | /api/v1/register     | Register | should not register | First name is not valid                     | &#10003; |
+| \-           | \-     | /api/v1/register     | Register | should not register | Last name can not be empty                  | &#10003; |
+| \-           | \-     | /api/v1/register     | Register | should not register | Last name is not valid                      | &#10003; |
+| \-           | \-     | /api/v1/register     | Register | should not register | Last name is not valid                      | &#10003; |
+| \-           | \-     | /api/v1/register     | Register | should not register | SQL_INJECTION_DETECTED                      | &#10003; |
+| \-           | \-     | /api/v1/register     | Register | should not register | Email can not be empty                      | &#10003; |
+| \-           | \-     | /api/v1/register     | Register | should not register | Email already exists                        | &#10003; |
+| \-           | \-     | /api/v1/register     | Register | should not register | Password can not be empty                   | &#10003; |
+| \-           | \-     | /api/v1/register     | Register | should not register | Password is not valid                       | &#10003; |
+| \-           | \-     | /api/v1/register     | Register | should not register | Password must contain at least 8 characters | &#10003; |
+| \-           | \-     | /api/v1/register     | Register | should not register | SQL_INJECTION_DETECTED                      | &#10003; |
+| \-           | \-     | **/api/v1/login**    | Login    | should login        | User authenticated                          | &#10003; |
+| \-           | \-     | /api/v1/login        | Login    | should not login    | Email can not be empty                      | &#10003; |
+| \-           | \-     | /api/v1/login        | Login    | should not login    | Email already exists                        | &#10003; |
+| \-           | \-     | /api/v1/login        | Login    | should not login    | Password can not be empty                   | &#10003; |
+| \-           | \-     | /api/v1/login        | Login    | should not login    | Password is not valid                       | &#10003; |
+| \-           | \-     | /api/v1/login        | Login    | should not login    | SQL_INJECTION_DETECTED                      | &#10003; |

@@ -17,6 +17,7 @@ const HOST = process.env.HOST || "localhost";
 
 // Routes import
 const authRoute = require("./routers/auth.route");
+const tokenRoute = require("./routers/token.route");
 
 // Start express app.
 const app = express();
@@ -35,7 +36,8 @@ app.use(
 );
 
 // Routes
-app.use("/api/v1/", authRoute);
+app.use("/api/v1/", authRoute); // authentication route.
+app.use("/api/v1/", tokenRoute); // token route.
 
 const server = createServer(app);
 

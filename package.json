@@ -28,7 +28,7 @@
     "env-prod": "NODE_ENV=$NODE_ENV node .",
     "start:dev": "NODE_ENV=developement npm run env-dev",
     "start": "NODE_ENV=production npm run env-prod",
-    "test": "NODE_ENV=test jest --detectOpenHandles"
+    "test": "NODE_ENV=test jest --detectOpenHandles && node ./tests/teardown.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
